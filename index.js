@@ -47,8 +47,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`)
       .then((response) => response.json())
-      .then((todos) => console.log(todos))
+      .then((todos) => {
+        generateTodos(todos);
+      })
       .catch((error) => console.log(error));
+
+    const generateTodos = (todos) => {
+      const ul = document.createElement('ul');
+      ul.classList.add('todos-list');
+      const todosWrapper = document.getElementById('todos');
+
+      todos.forEach((todo) => {
+        const li = document.createElement('li');
+        const spanTitle = document.createElement('span');
+        const spanCompleted = document.createElement('span');
+        spanTitle.classList.add('todo-title');
+        spanTitle.textContent = todo.title;
+        spanCompleted.classList.add('todo-completed');
+        spanCompleted.textContent = todo.completed;
+        li.append(spanTitle);
+        li.append(spanCompleted);
+        ul.append(li);
+      });
+
+      todosWrapper.append(ul);
+    };
   }
 
   function handleCheckboxChange() {

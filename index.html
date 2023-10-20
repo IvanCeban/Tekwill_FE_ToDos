@@ -28,18 +28,22 @@
         <button class="get-todos-btn" id="get_todos">Get user ToDos</button>
       </div>
 
-      <h2>Todos List</h2>
-      <ul class="todos-list">
-        <!-- Example todo list items -->
-        <li>
-          <span class="todo-title">Buy groceries</span>
-          <span class="todo-completed">Completed: No</span>
-        </li>
-        <li>
-          <span class="todo-title">Attend meeting</span>
-          <span class="todo-completed">Completed: Yes</span>
-        </li>
-      </ul>
+      <div id="todos">
+        <h2>Todos List</h2>
+        <ul class="todos-list">
+          <!-- Example todo list items -->
+          <li>
+            <input class="checkbox" type="checkbox" id="checkbox1" />
+            <span class="todo-title">Buy groceries</span>
+            <span class="todo-completed">Not done</span>
+          </li>
+          <li>
+            <input class="checkbox" type="checkbox" id="checkbox2" />
+            <span class="todo-title">Attend meeting</span>
+            <span class="todo-completed" id="todo_status">Done</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>

@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', handleClick);
   }
 
-  if (checkbox) {
-    checkbox.addEventListener('change', handleCheckboxChange);
-  }
+  //   if (checkbox) {
+  //     checkbox.addEventListener('change', handleCheckboxChange);
+  //   }
   // Event handler function
   function handleClick(event) {
     event.preventDefault();
@@ -57,14 +57,24 @@ document.addEventListener('DOMContentLoaded', function () {
       ul.classList.add('todos-list');
       const todosWrapper = document.getElementById('todos');
 
+      const currentUl = todosWrapper.querySelector('ul');
+      if (currentUl) todosWrapper.removeChild(currentUl);
+
       todos.forEach((todo) => {
         const li = document.createElement('li');
         const spanTitle = document.createElement('span');
         const spanCompleted = document.createElement('span');
+        const checkbox = document.createElement('input');
+
         spanTitle.classList.add('todo-title');
         spanTitle.textContent = todo.title;
         spanCompleted.classList.add('todo-completed');
-        spanCompleted.textContent = todo.completed;
+        spanCompleted.textContent = todo.completed ? 'Done' : 'Not done';
+        checkbox.type = 'checkbox';
+        checkbox.classList.add('checkbox');
+        checkbox.id = `checkbox_${todo.id}`;
+
+        li.append(checkbox);
         li.append(spanTitle);
         li.append(spanCompleted);
         ul.append(li);

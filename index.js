@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const button = document.getElementById('get_todos');
+  const input = document.getElementById('user-id-input');
+  const checkbox = document.getElementById('checkbox2');
+
   const getUsers = async () => {
     const usersResponse = await fetch(
       'https://jsonplaceholder.typicode.com/users'
@@ -26,8 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
     usersWrapper.append(ul);
   };
   getUsers();
-  const button = document.getElementById('get_todos');
-  const checkbox = document.getElementById('checkbox2');
 
   // Add event listener
   if (button) {
@@ -41,7 +43,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // Event handler function
   function handleClick(event) {
     event.preventDefault();
-    console.log('Button clicked!');
+    const userId = input.value;
+
+    fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`)
+      .then((response) => response.json())
+      .then((todos) => console.log(todos))
+      .catch((error) => console.log(error));
   }
 
   function handleCheckboxChange() {

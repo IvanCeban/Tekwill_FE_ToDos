@@ -45,6 +45,10 @@ label {
   font-weight: bold;
 }
 
+.user-id {
+  width: 20px;
+  margin-right: 10px;
+}
 #user-id-input {
   padding: 10px;
   width: 200px;

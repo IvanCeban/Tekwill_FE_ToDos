@@ -8,15 +8,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const ul = document.createElement('ul');
     ul.classList.add('user-list');
-    const li = document.createElement('li');
-    const spanId = document.createElement('span');
-    const spanName = document.createElement('span');
     const usersWrapper = document.getElementById('users');
-    spanId.classList.add('user-id');
-    spanName.classList.add('user-name');
-    li.append(spanId);
-    li.append(spanName);
-    ul.append(li);
+
+    users.forEach((user) => {
+      const li = document.createElement('li');
+      const spanId = document.createElement('span');
+      const spanName = document.createElement('span');
+      spanId.classList.add('user-id');
+      spanId.textContent = user.id;
+      spanName.classList.add('user-name');
+      spanName.textContent = user.name;
+      li.append(spanId);
+      li.append(spanName);
+      ul.append(li);
+    });
+
     usersWrapper.append(ul);
   };
   getUsers();
